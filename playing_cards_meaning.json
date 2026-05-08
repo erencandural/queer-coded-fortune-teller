@@ -1,0 +1,213 @@
+{
+  "ace_of_hearts": {
+    "name": "Ace of Hearts",
+    "meaning": "Love and happiness. The home, a love letter. This card is a particularly favorable card that indicates troubles and problems lifting."
+  },
+  "king_of_hearts": {
+    "name": "King of Hearts",
+    "meaning": "A fair-haired man with a good nature; or a man with Water signs predominating in his chart. Fair, helpful advice. Affectionate, caring man. This man helps you out without much talk. His actions reveal his kindness and concern."
+  },
+  "queen_of_hearts": {
+    "name": "Queen of Hearts",
+    "meaning": "A fair-haired woman with a good nature; or a woman with Water signs predominating in her chart. Kind advice. Affectionate, caring woman. Sometimes, this card can indicate the mother or a mother figure."
+  },
+  "jack_of_hearts": {
+    "name": "Jack of Hearts",
+    "meaning": "A warm-hearted friend. A fair-haired youth; or a young person with Water signs predominating in his or her chart. Often this points to a younger admirer."
+  },
+  "10_of_hearts": {
+    "name": "10 of Hearts",
+    "meaning": "Good luck, success. This is an important card that suggests good fortune after difficulty."
+  },
+  "9_of_hearts": {
+    "name": "9 of Hearts",
+    "meaning": "The card of wishes. A wish/dream fulfilled. Look to the card just preceding this one to determine what the querent desires."
+  },
+  "8_of_hearts": {
+    "name": "8 of Hearts",
+    "meaning": "Unexpected gift or visit; an invitation to a party."
+  },
+  "7_of_hearts": {
+    "name": "7 of Hearts",
+    "meaning": "Someone whose interest in you is unreliable; someone with fickle affections for you. This card can indicate lovesickness."
+  },
+  "6_of_hearts": {
+    "name": "6 of Hearts",
+    "meaning": "A sudden wave of good luck. Someone takes care of you, takes warm interest in you."
+  },
+  "5_of_hearts": {
+    "name": "5 of Hearts",
+    "meaning": "Jealousy; some ill-will from people around you."
+  },
+  "4_of_hearts": {
+    "name": "4 of Hearts",
+    "meaning": "Travel, change of home or business."
+  },
+  "3_of_hearts": {
+    "name": "3 of Hearts",
+    "meaning": "Love and happiness when the entire spread is generally favorable. In a difficult spread, this can indicate emotional problems and an inability to decide who to love."
+  },
+  "2_of_hearts": {
+    "name": "2 of Hearts",
+    "meaning": "A warm partnership or engagement. This is a very favorable card that indicates strength and support coming from a partner."
+  },
+
+  "ace_of_clubs": {
+    "name": "Ace of Clubs",
+    "meaning": "Wealth, prosperity, unexpected money/gain. However, in a difficult spread, this money may disappear almost as quickly as it appears."
+  },
+  "king_of_clubs": {
+    "name": "King of Clubs",
+    "meaning": "Dark-haired, kind-hearted man; or a man with Fire predominating in his chart. A generous, spirited man."
+  },
+  "queen_of_clubs": {
+    "name": "Queen of Clubs",
+    "meaning": "Dark-haired, confident woman; or a woman with Fire predominating in her chart. She may give you good advice."
+  },
+  "jack_of_clubs": {
+    "name": "Jack of Clubs",
+    "meaning": "A dark-haired or fiery youth. Popular youth who is good-hearted and playful. Can also indicate an admirer."
+  },
+  "10_of_clubs": {
+    "name": "10 of Clubs",
+    "meaning": "Business success. Good luck with money. A trip taken now may result in a new friend or love interest."
+  },
+  "9_of_clubs": {
+    "name": "9 of Clubs",
+    "meaning": "Achievement; sometimes a wealthy marriage or a sudden windfall."
+  },
+  "8_of_clubs": {
+    "name": "8 of Clubs",
+    "meaning": "Work/business problems that may have to do with jealousy. This is generally thought to be quite unfavorable."
+  },
+  "7_of_clubs": {
+    "name": "7 of Clubs",
+    "meaning": "Business success, although there may be problems in love. A change in business that may have been expected or earned, such as a promotion."
+  },
+  "6_of_clubs": {
+    "name": "6 of Clubs",
+    "meaning": "Financial aid or success."
+  },
+  "5_of_clubs": {
+    "name": "5 of Clubs",
+    "meaning": "New friendships, alliances are made."
+  },
+  "4_of_clubs": {
+    "name": "4 of Clubs",
+    "meaning": "Beware of dishonesty or deceit; avoid blind acceptance of others at this time."
+  },
+  "3_of_clubs": {
+    "name": "3 of Clubs",
+    "meaning": "Love and happiness; successful marriage; a favorable long-term proposition. A second chance, particularly in an economical sense."
+  },
+  "2_of_clubs": {
+    "name": "2 of Clubs",
+    "meaning": "Obstacles to success; malicious gossip."
+  },
+
+  "ace_of_spades": {
+    "name": "Ace of Spades",
+    "meaning": "Misfortune; sometimes associated with death or, more often, a difficult ending."
+  },
+  "king_of_spades": {
+    "name": "King of Spades",
+    "meaning": "Dark-haired man; or a man with Air predominating in his chart. An ambitious man, perhaps self-serving."
+  },
+  "queen_of_spades": {
+    "name": "Queen of Spades",
+    "meaning": "Widowed or divorced woman; or a woman with Air predominating in her chart."
+  },
+  "jack_of_spades": {
+    "name": "Jack of Spades",
+    "meaning": "A youth who is hostile or jealous."
+  },
+  "10_of_spades": {
+    "name": "10 of Spades",
+    "meaning": "Worry; bad news."
+  },
+  "9_of_spades": {
+    "name": "9 of Spades",
+    "meaning": "Illness, accident, bad luck. The querent is at his/her personal low."
+  },
+  "8_of_spades": {
+    "name": "8 of Spades",
+    "meaning": "Temptation, misfortune, danger, upsets."
+  },
+  "7_of_spades": {
+    "name": "7 of Spades",
+    "meaning": "Advice that is best not taken; loss. There is some obstacle to success, and this indicates that obstacles may be coming from within the querent."
+  },
+  "6_of_spades": {
+    "name": "6 of Spades",
+    "meaning": "Small changes and improvements."
+  },
+  "5_of_spades": {
+    "name": "5 of Spades",
+    "meaning": "Opposition and obstacles that are temporary; a blessing in disguise. Sometimes indicates a negative or depressed person."
+  },
+  "4_of_spades": {
+    "name": "4 of Spades",
+    "meaning": "Small worries, problems. Financial difficulties, personal lows."
+  },
+  "3_of_spades": {
+    "name": "3 of Spades",
+    "meaning": "Breaks in relationships. Sometimes indicates that a third person is breaking into a relationship somehow."
+  },
+  "2_of_spades": {
+    "name": "2 of Spades",
+    "meaning": "Breaks in relationships; deceit. A break in an important process in the querent’s life. If the question concerns a particular romantic interest, this is considered a warning card – infidelity or separation is quite likely."
+  },
+
+  "ace_of_diamonds": {
+    "name": "Ace of Diamonds",
+    "meaning": "Change; a message, often about money, and usually good news."
+  },
+  "king_of_diamonds": {
+    "name": "King of Diamonds",
+    "meaning": "Fair-haired or graying man, or a man with Earth predominating in his chart. A man of authority, status, or influence."
+  },
+  "queen_of_diamonds": {
+    "name": "Queen of Diamonds",
+    "meaning": "Fair-haired woman; or a woman with Earth predominating in her chart. A gossip."
+  },
+  "jack_of_diamonds": {
+    "name": "Jack of Diamonds",
+    "meaning": "A youth, possibly in uniform. Or, a jealous person who may be unreliable. A person who brings news, generally negative, but relatively minor."
+  },
+  "10_of_diamonds": {
+    "name": "10 of Diamonds",
+    "meaning": "A change in financial status, often for the better."
+  },
+  "9_of_diamonds": {
+    "name": "9 of Diamonds",
+    "meaning": "A new business deal; travel; restlessness; a change of residence."
+  },
+  "8_of_diamonds": {
+    "name": "8 of Diamonds",
+    "meaning": "New job; change in job situation. The young or the old may find love on a trip."
+  },
+  "7_of_diamonds": {
+    "name": "7 of Diamonds",
+    "meaning": "An argument concerning finances, or on the job. Generally expected to be resolved happily."
+  },
+  "6_of_diamonds": {
+    "name": "6 of Diamonds",
+    "meaning": "Relationship problems, arguments. Separation."
+  },
+  "5_of_diamonds": {
+    "name": "5 of Diamonds",
+    "meaning": "Happiness and success. A change for the better. A birth, or good news for a child. A good time to start new projects."
+  },
+  "4_of_diamonds": {
+    "name": "4 of Diamonds",
+    "meaning": "Financial upswing; an older person may give good advice."
+  },
+  "3_of_diamonds": {
+    "name": "3 of Diamonds",
+    "meaning": "A legal letter. Be tactful with others in order to avoid disputes."
+  },
+  "2_of_diamonds": {
+    "name": "2 of Diamonds",
+    "meaning": "A business partnership; a change in relationship; gossip."
+  }
+}
