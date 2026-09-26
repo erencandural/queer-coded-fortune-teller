@@ -92,53 +92,60 @@ class TarotPage(tk.Frame):
         super().__init__(parent)
 
         self.controller = controller
-        self.configure(bg="white")
+        self.configure(bg="light steel blue")
 
         self.grid_rowconfigure(0, weight=0)  # title
         self.grid_rowconfigure(1, weight=1)  # cards
-        self.grid_rowconfigure(2, weight=0)  # buttons
+        self.grid_rowconfigure(2, weight=2)  # card names
+        self.grid_rowconfigure(3, weight=0)  # buttons
 
         self.grid_columnconfigure(0, weight=1)
-
-        # # Background image
-        # card_back = Image.open(BASE_DIR / "card_back.png").convert("RGBA")
-        # card_back = card_back.resize((320, 480), Image.LANCZOS) # 245, 418 works nicely
-
-        # alpha = card_back.getchannel("A")
-        # alpha = alpha.point(lambda p: int(p * 0.22))   # try 0.15 to 0.30
-        # card_back.putalpha(alpha)
-
-        # self.bg_image = ImageTk.PhotoImage(card_back)
 
         # Title
         self.title_label = tk.Label(
             self,
             text="Tarot Cards Reading",
-            font=("Courier", 16),
-            bg="white"
+            font=("Century", 22),
+            bg="light steel blue"
         )
         self.title_label.grid(row=0, column=0, pady=(10, 5))
 
-        self.cards_frame = tk.Frame(self, bg="white")
+        self.cards_frame = tk.Frame(self, bg="light steel blue")
         self.cards_frame.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
         for col in range(3):
             self.cards_frame.columnconfigure(col, weight=1, uniform="cards")
 
-        self.button_frame = tk.Frame(self, bg="white")
-        self.button_frame.grid(row=2, column=0, sticky="ew", padx=5, pady=(5, 10))
+        self.names_frame = tk.Frame(self, bg="white")
+        self.names_frame.grid(row=2, column=0, sticky="ew", padx=5, pady=(0, 5))
+        self.names_frame.columnconfigure(0, weight=1)
+
+        for row in range(3):
+            self.names_frame.rowconfigure(row, weight=1)
+
+        self.button_frame = tk.Frame(self, bg="light steel blue")
+        self.button_frame.grid(row=3, column=0, sticky="ew", padx=5, pady=(5, 10))
 
 
         self.meanings = load_meanings()
         self.tarot_cards = load_tarot_cards()
 
         # Empty labels for the three cards
-        self.past_card = tk.Label(self.cards_frame, text="Past", compound="top")
-        self.present_card = tk.Label(self.cards_frame, text="Present", compound="top")
-        self.future_card = tk.Label(self.cards_frame, text="Future", compound="top")
-
+        self.past_card = tk.Label(self.cards_frame, bg="light steel blue")
+        self.present_card = tk.Label(self.cards_frame, bg="light steel blue")
+        self.future_card = tk.Label(self.cards_frame, bg="light steel blue")
+        
         self.past_card.grid(row=0, column=0, sticky="n")
         self.present_card.grid(row=0, column=1, sticky="n")
         self.future_card.grid(row=0, column=2, sticky="n")
+
+
+        self.past_name = tk.Label(self.names_frame, bg="white", fg="RoyalBlue4", font=("Cambria", 14), wraplength=wrap_length, justify="center")
+        self.present_name = tk.Label(self.names_frame, bg="white", fg="RoyalBlue4", font=("Cambria", 14), wraplength=wrap_length, justify="center")
+        self.future_name = tk.Label(self.names_frame, bg="white", fg="RoyalBlue4", font=("Cambria", 14), wraplength=wrap_length, justify="center")
+
+        self.past_name.grid(row=0, column=0, sticky="nsew")
+        self.present_name.grid(row=1, column=0, sticky="nsew")
+        self.future_name.grid(row=2, column=0, sticky="nsew")
 
         # Create a list of dictionaries
         self.current_draw = []
@@ -179,14 +186,14 @@ class TarotPage(tk.Frame):
         picks = random.sample(list(self.tarot_cards.items()), 3)
 
         slots = [
-            ("Past", self.past_card),
-            ("Present", self.present_card),
-            ("Future", self.future_card),
+            ("Past", self.past_card, self.past_name),
+            ("Present", self.present_card, self.present_name),
+            ("Future", self.future_card, self.future_name),
         ]
 
         self.current_draw = []
 
-        for (slot_name, slot_label), (card_id, card_data) in zip(slots, picks):
+        for (slot_name, slot_label, name_label), (card_id, card_data) in zip(slots, picks):
             base_img = card_data["screen"]
             is_upright = random.choice([True, False])
             orientation = "Upright" if is_upright else "Reversed"
@@ -197,10 +204,12 @@ class TarotPage(tk.Frame):
             tk_img = ImageTk.PhotoImage(final_img, master=self)
 
             slot_label.config(
-                text=f"{slot_name}\n{pretty_name}\n{orientation}",
                 image=tk_img,
-                compound="top",
-                bg="white"
+                bg="light steel blue"
+            )
+
+            name_label.config(
+                text=f"{slot_name}: {pretty_name} ({orientation})"
             )
             slot_label.image = tk_img
 

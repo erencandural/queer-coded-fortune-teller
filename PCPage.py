@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import ImageTk, Image, ImageOps, ImageEnhance
 import random
-# from escpos.printer import Serial
+from escpos.printer import Serial
 import time
 from pathlib import Path
 
@@ -14,7 +14,7 @@ wrap_length = 320
 BASE_DIR = Path(__file__).resolve().parent
 
 playing_cards_dir = BASE_DIR / "playing_cards/"
-meanings_path = BASE_DIR / "playing_card_meanings.json"
+meanings_path = BASE_DIR / "playing_cards_meanings.json"
 
 # Serial settings
 PORT = "/dev/serial0"
@@ -93,11 +93,12 @@ class PCPage(tk.Frame):
         super().__init__(parent)
 
         self.controller = controller
-        self.configure(bg="white")
+        self.configure(bg="firebrick3")
 
         self.grid_rowconfigure(0, weight=0)  # title
-        self.grid_rowconfigure(1, weight=1)  # cards
-        self.grid_rowconfigure(2, weight=0)  # buttons
+        self.grid_rowconfigure(1, weight=1)  # card images
+        self.grid_rowconfigure(2, weight=2)  # card names
+        self.grid_rowconfigure(3, weight=0)  # buttons
 
         self.grid_columnconfigure(0, weight=1)
 
@@ -105,31 +106,68 @@ class PCPage(tk.Frame):
         self.title_label = tk.Label(
             self,
             text="Playing Cards Reading",
-            font=("Bodoni MT Poster Compressed", 16),
-            bg="white"
+            font=("Century", 20),
+            bg="firebrick3"
         )
         self.title_label.grid(row=0, column=0, pady=(10, 5))
 
-        self.cards_frame = tk.Frame(self, bg="white")
-        self.cards_frame.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
+        self.cards_frame = tk.Frame(self, bg="firebrick3")
+        self.cards_frame.grid(row=1, column=0, sticky="nsew", padx=5, pady=(5, 2))
         for col in range(3):
             self.cards_frame.columnconfigure(col, weight=1, uniform="cards")
 
-        self.button_frame = tk.Frame(self, bg="white")
-        self.button_frame.grid(row=2, column=0, sticky="ew", padx=5, pady=(5, 10))
+        self.names_frame = tk.Frame(self, bg="white")
+        self.names_frame.grid(row=2, column=0, sticky="ew", padx=8, pady=(2, 6))
+        self.names_frame.columnconfigure(0, weight=1)
+
+        self.button_frame = tk.Frame(self, bg="firebrick3")
+        self.button_frame.grid(row=3, column=0, sticky="ew", padx=5, pady=(5, 10))
 
 
         self.meanings = load_meanings()
         self.playing_cards = load_playing_cards()
 
-        # Empty labels for the three cards
-        self.past_card = tk.Label(self.cards_frame, text="Past", compound="top")
-        self.present_card = tk.Label(self.cards_frame, text="Present", compound="top")
-        self.future_card = tk.Label(self.cards_frame, text="Future", compound="top")
+        # Empty labels for the three card images
+        self.past_card = tk.Label(self.cards_frame, bg="white")
+        self.present_card = tk.Label(self.cards_frame, bg="white")
+        self.future_card = tk.Label(self.cards_frame, bg="white")
 
         self.past_card.grid(row=0, column=0, sticky="n")
         self.present_card.grid(row=0, column=1, sticky="n")
         self.future_card.grid(row=0, column=2, sticky="n")
+
+        # Separate readable name labels under the card images
+        self.past_name = tk.Label(
+            self.names_frame,
+            text="Past:",
+            font=("Cambria", 14),
+            bg="white",
+            anchor="center",
+            justify="center",
+            wraplength=300,
+        )
+        self.present_name = tk.Label(
+            self.names_frame,
+            text="Present:",
+            font=("Cambria", 14),
+            bg="white",
+            anchor="center",
+            justify="center",
+            wraplength=300,
+        )
+        self.future_name = tk.Label(
+            self.names_frame,
+            text="Future:",
+            font=("Cambria", 14),
+            bg="white",
+            anchor="center",
+            justify="center",
+            wraplength=300,
+        )
+
+        self.past_name.grid(row=0, column=0, sticky="ew", pady=1)
+        self.present_name.grid(row=1, column=0, sticky="ew", pady=1)
+        self.future_name.grid(row=2, column=0, sticky="ew", pady=1)
 
         # Create a list of dictionaries
         self.current_draw = []
@@ -170,30 +208,32 @@ class PCPage(tk.Frame):
         picks = random.sample(list(self.playing_cards.items()), 3)
 
         slots = [
-            ("Past", self.past_card),
-            ("Present", self.present_card),
-            ("Future", self.future_card),
+            ("Past", self.past_card, self.past_name),
+            ("Present", self.present_card, self.present_name),
+            ("Future", self.future_card, self.future_name),
         ]
 
         self.current_draw = []
 
-        for (slot_name, slot_label), (card_id, card_data) in zip(slots, picks):
+        for (slot_name, slot_label, name_label), (card_id, card_data) in zip(slots, picks):
             base_img = card_data["screen"]
-            is_upright = random.choice([True, False])
+            is_upright = True
             orientation = "Upright" if is_upright else "Reversed"
 
             final_img = base_img if is_upright else base_img.rotate(180, expand=False)
-            pretty_name, meaning = pick_meaning(self.meanings, card_id, is_upright)
+            pretty_name, meaning = pick_meaning(self.meanings, card_id)
 
             tk_img = ImageTk.PhotoImage(final_img, master=self)
 
             slot_label.config(
-                text=f"{slot_name}\n{pretty_name}\n{orientation}",
                 image=tk_img,
-                compound="top",
-                bg="white"
+                bg="firebrick3"
             )
             slot_label.image = tk_img
+
+            name_label.config(
+                text=f"{slot_name}: {pretty_name}"
+            )
 
             self.current_draw.append({
                 "slot": slot_name,
@@ -267,7 +307,7 @@ class PCPage(tk.Frame):
             for item in self.current_draw:
                 orientation = "Upright" if item["upright"] else "Reversed"
 
-                header = f'{item["slot"]}:\n{item["pretty_name"]} ({orientation})'
+                header = f'{item["slot"]}:\n{item["pretty_name"]}'
 
                 printer.set(align="left", bold=True)
                 printer.textln(header)
